@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ChambreDetails list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Slug</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chambreDetail in chambreDetails %}
+            <tr>
+                <td><a href="{{ path('chambredetails_show', { 'id': chambreDetail.id }) }}">{{ chambreDetail.title }}</a></td>
+                <td>{{ chambreDetail.slug }}</td>
+                <td>{{ chambreDetail.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('chambredetails_show', { 'id': chambreDetail.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('chambredetails_edit', { 'id': chambreDetail.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('chambredetails_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

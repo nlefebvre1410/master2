@@ -1,0 +1,14 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <h1>{{ chambre.title }}</h1>
+        <div class="span12">
+            <ul class="nav nav-stacked">
+                {% render(controller('CzAdminBundle:ChambreDetails:menu',{'slug2': chambre.title})) %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

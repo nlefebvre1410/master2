@@ -1,0 +1,38 @@
+{% extends '@CzAdmin/Layout/layout.html.twig' %}
+
+
+{% block content %}
+    <h1>ChambreGenerale list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chambreGenerale in chambreGenerales %}
+            <tr>
+                <td><a href="{{ path('admin_chambregenerale_show', { 'id': chambreGenerale.id }) }}">{{ chambreGenerale.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_chambregenerale_show', { 'id': chambreGenerale.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_chambregenerale_edit', { 'id': chambreGenerale.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_chambregenerale_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

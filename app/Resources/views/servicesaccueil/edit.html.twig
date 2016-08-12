@@ -1,0 +1,408 @@
+{% extends '@CzAdmin/Layout/layout.html.twig' %}
+
+
+{% block content %}
+
+    {#{% form_theme edit_form 'CzAdminBundle:Form:fields.html.twig' %}#}
+
+
+    {#{{ form_start(edit_form,{ 'attr': {'class': 'form-horizontal'}}) }}#}
+
+    {% include '@CzAdmin/Layout/_header.global.html.twig' %}
+
+    <h1>ServicesAccueil edit</h1>
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h6 class="panel-title text-semibold">Fill space</h6>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="panel-body">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-7">
+                <div class="row ">
+                    <div class="col-md-3 col-sm-4"><a href="#" id="icon-24"><i class="icon-24"></i>icon-24</a></div>
+                    <div class="col-md-3 col-sm-4"><a href="#" id="icon-anti-allergene"><i class="icon-anti-allergene"></i> icon-anti-allergene</a></div>
+                    <div class="col-md-3 col-sm-4"><i class="icon-home5"></i> icon-home5</div>
+                    <div class="col-md-3 col-sm-4"><i class="icon-home7"></i> icon-home7</div>
+                    <div class="col-md-3 col-sm-4"><i class="icon-home8"></i> icon-home8</div>
+                    <div class="col-md-3 col-sm-4"><i class="icon-home9"></i> icon-home9</div>
+                    <div class="col-md-3 col-sm-4"><i class="icon-office"></i> icon-office</div>
+                </div>
+                <div class="ui-widget ui-helper-clearfix panel div-gallery">
+
+                    <ul id="gallery" class="gallery ui-helper-reset ui-helper-clearfix">
+
+                     <li>  <a href="#"><span class="icon-24">  </span> <span class="mls"> icon-24</span></a> </li>
+                        <li><span class="icon-animaux"></span><span class="mls"> icon-animaux</span>   </li>
+
+
+
+
+                        <li>
+                            <span class="icon-anti-allergene">
+                            </span>
+                            <span class="mls"> icon-anti-allergene</span>
+                        </li>
+                        <li>
+                            <span class="icon-ascenceur">
+                            </span>
+                            <span class="mls"> icon-ascenceur</span>
+                        </li>
+                        <li>
+                            <span class="icon-baignoire">
+                            </span>
+                            <span class="mls"> icon-baignoire</span>
+                        </li>
+                        <li>
+                            <span class="icon-bar">
+                            </span>
+                            <span class="mls"> icon-bar</span>
+                        </li>
+                        <li>
+                            <span class="icon-bebe">
+                            </span>
+                            <span class="mls"> icon-bebe</span>
+                        </li>
+                        <li>
+                            <span class="icon-bibliotheque">
+                            </span>
+                            <span class="mls"> icon-bibliotheque</span>
+                        </li>
+                        <li>
+                            <span class="icon-bien-etre">
+                            </span>
+                            <span class="mls"> icon-bien-etre</span>
+                        </li>
+                        <li>
+                            <span class="icon-billard">
+                            </span>
+                            <span class="mls"> icon-billard</span>
+                        </li>
+                        <li>
+                            <span class="icon-billeterie">
+                            </span>
+                            <span class="mls"> icon-billeterie</span>
+                        </li>
+                        <li>
+                            <span class="icon-blanchisserie">
+                            </span>
+                            <span class="mls"> icon-blanchisserie</span>
+                        </li>
+                        <li>
+                            <span class="icon-business-center">
+                            </span>
+                            <span class="mls"> icon-business-center</span>
+                        </li>
+                        <li>
+                            <span class="icon-centre-ville">
+                            </span>
+                            <span class="mls"> icon-centre-ville</span>
+                        </li>
+                        <li>
+                            <span class="icon-chambre-double">
+                                <®/span>
+                                <span class="mls"> icon-chambre-double</span>
+                        </li>
+                        <li>
+                            <span class="icon-cireuse-chaussure">
+                            </span>
+                            <span class="mls"> icon-cireuse-chaussure</span>
+                        </li>
+                        <li>
+                            <span class="icon-clef">
+                            </span>
+                            <span class="mls"> icon-clef</span>
+                        </li>
+                        <li>
+                            <span class="icon-climatisation">
+                            </span>
+                            <span class="mls"> icon-climatisation</span>
+                        </li>
+                        <li>
+                            <span class="icon-coffre-fort">
+                            </span>
+                            <span class="mls"> icon-coffre-fort</span>
+                        </li>
+                        <li>
+                            <span class="icon-consigne-bagage">
+                            </span>
+                            <span class="mls"> icon-consigne-bagage</span>
+                        </li>
+                        <li>
+                            <span class="icon-divers">
+                            </span>
+                            <span class="mls"> icon-divers</span>
+                        </li>
+                        <li>
+                            <span class="icon-ecran">
+                            </span>
+                            <span class="mls"> icon-ecran</span>
+                        </li>
+                        <li>
+                            <span class="icon-excursions">
+                            </span>
+                            <span class="mls"> icon-excursions</span>
+                        </li>
+                        <li>
+                            <span class="icon-famille">
+                            </span>
+                            <span class="mls"> icon-famille</span>
+                        </li>
+                        <li>
+                            <span class="icon-fax">
+                            </span>
+                            <span class="mls"> icon-fax</span>
+                        </li>
+                        <li>
+                            <span class="icon-fer-a-repasser">
+                            </span>
+                            <span class="mls"> icon-fer-a-repasser</span>
+                        </li>
+                        <li>
+                            <span class="icon-golf">
+                            </span>
+                            <span class="mls"> icon-golf</span>
+                        </li>
+                        <li>
+                            <span class="icon-handicape">
+                            </span>
+                            <span class="mls"> icon-handicape</span>
+                        </li>
+                        <li>
+                            <span class="icon-imprimante">
+                            </span>
+                            <span class="mls"> icon-imprimante</span>
+                        </li>
+                        <li>
+                            <span class="icon-insonorisation">
+                            </span>
+                            <span class="mls"> icon-insonorisation</span>
+                        </li>
+                        <li>
+                            <span class="icon-jardin">
+                            </span>
+                            <span class="mls"> icon-jardin</span>
+                        </li>
+                        <li>
+                            <span class="icon-jeux-societe">
+                            </span>
+                            <span class="mls"> icon-jeux-societe</span>
+                        </li>
+                        <li>
+                            <span class="icon-journaux">
+                            </span>
+                            <span class="mls"> icon-journaux</span>
+                        </li>
+                        <li>
+                            <span class="icon-lit-bebe">
+                            </span>
+                            <span class="mls"> icon-lit-bebe</span>
+                        </li>
+                        <li>
+                            <span class="icon-localisation">
+                            </span>
+                            <span class="mls"> icon-localisation</span>
+                        </li>
+                        <li>
+                            <span class="icon-massage">
+                            </span>
+                            <span class="mls"> icon-massage</span>
+                        </li>
+                        <li>
+                            <span class="icon-mini-bar">
+                            </span>
+                            <span class="mls"> icon-mini-bar</span>
+                        </li>
+                        <li>
+                            <span class="icon-multi-langues">
+                            </span>
+                            <span class="mls"> icon-multi-langues</span>
+                        </li>
+                        <li>
+                            <span class="icon-navette">
+                            </span>
+                            <span class="mls"> icon-navette</span>
+                        </li>
+                        <li>
+                            <span class="icon-necessaire-toilette">
+                            </span>
+                            <span class="mls"> icon-necessaire-toilette</span>
+                        </li>
+                        <li>
+                            <span class="icon-non-fumeur">
+                            </span>
+                            <span class="mls"> icon-non-fumeur</span>
+                        </li>
+                        <li>
+                            <span class="icon-ordinateur">
+                            </span>
+                            <span class="mls"> icon-ordinateur</span>
+                        </li>
+                        <li>
+                            <span class="icon-parking">
+                            </span>
+                            <span class="mls"> icon-parking</span>
+                        </li>
+                        <li>
+                            <span class="icon-petit-dejeuner">
+                            </span>
+                            <span class="mls"> icon-petit-dejeuner</span>
+                        </li>
+                        <li>
+                            <span class="icon-piscine">
+                            </span>
+                            <span class="mls"> icon-piscine</span>
+                        </li>
+                        <li>
+                            <span class="icon-plage">
+                            </span>
+                            <span class="mls"> icon-plage</span>
+                        </li>
+                        <li>
+                            <span class="icon-reception">
+                            </span>
+                            <span class="mls"> icon-reception</span>
+                        </li>
+                        <li>
+                            <span class="icon-restaurant">
+                            </span>
+                            <span class="mls"> icon-restaurant</span>
+                        </li>
+                        <li>
+                            <span class="icon-reunion">
+                            </span>
+                            <span class="mls"> icon-reunion</span>
+                        </li>
+                        <li>
+                            <span class="icon-reveil">
+                            </span>
+                            <span class="mls"> icon-reveil</span>
+                        </li>
+                        <li>
+                            <span class="icon-room-service">
+                            </span>
+                            <span class="mls"> icon-room-service</span>
+                        </li>
+                        <li>
+                            <span class="icon-sauna">
+                            </span>
+                            <span class="mls"> icon-sauna</span>
+                        </li>
+                        <li>
+                            <span class="icon-seche-cheveux">
+                            </span>
+                            <span class="mls"> icon-seche-cheveux</span>
+                        </li>
+                        <li>
+                            <span class="icon-sport">
+                            </span>
+                            <span class="mls"> icon-sport</span>
+                        </li>
+                        <li>
+                            <span class="icon-taxi">
+                            </span>
+                            <span class="mls"> icon-taxi</span>
+                        </li>
+                        <li>
+                            <span class="icon-telephone">
+                            </span>
+                            <span class="mls"> icon-telephone</span>
+                        </li>
+                        <li>
+                            <span class="icon-tennis">
+                            </span>
+                            <span class="mls"> icon-tennis</span>
+                        </li>
+                        <li>
+                            <span class="icon-terrasse">
+                            </span>
+                            <span class="mls"> icon-terrasse</span>
+                        </li>
+                        <li>
+                            <span class="icon-tv">
+                            </span>
+                            <span class="mls"> icon-tv</span>
+                        </li>
+                        <li>
+                            <span class="icon-velo">
+                            </span>
+                            <span class="mls"> icon-velo</span>
+                        </li>
+                        <li>
+                            <span class="icon-video-surveillance">
+                            </span>
+                            <span class="mls"> icon-video-surveillance</span>
+                        </li>
+                        <li>
+                            <span class="icon-vue-mer">
+                            </span>
+                            <span class="mls"> icon-vue-mer</span>
+                        </li>
+                        <li>
+                            <span class="icon-vue-montagne">
+                            </span>
+                            <span class="mls"> icon-vue-montagne</span>
+                        </li>
+                        <li>
+                            <span class="icon-wifi">
+                            </span>
+                            <span class="mls"> icon-wifi</span>
+
+                    </ul>
+
+
+                </div>
+            </div>
+            {#<div class="form-group">#}
+                {#{{ form_label(edit_form.icons1) }}#}
+                {#{{ form_widget(edit_form.icons1) }}#}
+            {#</div>#}
+            {#<div class="form-group">#}
+                {#{{ form_label(edit_form.title1) }}#}
+                {#{{ form_widget(edit_form.title1) }}#}
+            {#</div>#}
+            {#<div class="form-group">#}
+                {#{{ form_label(edit_form.descriptif1) }}#}
+                {#{{ form_widget(edit_form.descriptif1) }}#}
+            {#</div>#}
+
+
+        </div>
+        {#<input type="submit" value="Edit" />#}
+        {#{{ form_end(edit_form) }}#}
+
+        <ul>
+            <li>
+                <a href="{{ path('admin_servicesaccueil_index') }}">Back to the list</a>
+            </li>
+            <li>
+                {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </li>
+        </ul>
+        <script>
+//            jQuery(document).ready(function() {
+//                $(function() {
+//                    $('a').click(function(e) {
+//                        e.preventDefault();
+//
+//                       var z = $(this).attr('id')
+//                        console.log(z);
+//                        $(this).addClass('selected');
+//                        $(this).parent().siblings().find('a').removeClass('selected');
+//                    })
+//                })
+//
+//
+//            })
+        </script>
+    {% endblock %}

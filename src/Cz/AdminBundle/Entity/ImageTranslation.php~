@@ -1,0 +1,43 @@
+<?php
+
+namespace Cz\AdminBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+use A2lix\I18nDoctrineBundle\Doctrine\Interfaces\OneLocaleInterface;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="cz_adminbundle_image_translation")
+ */
+class ImageTranslation implements OneLocaleInterface
+{
+
+    use \A2lix\I18nDoctrineBundle\Doctrine\ORM\Util\Translation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nomhotel", type="string", length=255)
+     */
+    private $nomhotel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descriptif", type="string", length=255)
+     */
+    private $descriptif;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="widget", type="string", length=255)
+     */
+    private $widget;
+
+
+
+
+
+
+}

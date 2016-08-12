@@ -1,0 +1,22 @@
+<?php
+
+namespace Cz\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * AcceuilSuite
+ *
+ * @ORM\Table(name="cz_adminbundle_acceuil_suite")
+ * @ORM\Entity
+ */
+class AcceuilSuite extends \Cz\ManagerBundle\Entity\AbstractEntity
+{
+
+    /**
+     * @ORM\OneToMany(targetEntity="Image", mappedBy="acceuilsuite", cascade={"persist","remove"})
+     */
+    private $image;
+
+}
+

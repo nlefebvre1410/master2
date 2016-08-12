@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}CzI18Bundle:Acceuil:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Acceuil:index pageddds</h1>
+
+    <ul class="nav nav-stacked">
+        {% render(controller('CzAdminBundle:ChambreGenerale:menu')) %}
+    </ul>
+{% endblock %}

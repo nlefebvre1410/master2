@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ServicesAccueil list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Icons1</th>
+                <th>Title1</th>
+                <th>Descriptif1</th>
+                <th>Icons2</th>
+                <th>Title2</th>
+                <th>Descriptif2</th>
+                <th>Icons3</th>
+                <th>Title3</th>
+                <th>Descriptif3</th>
+                <th>Icons4</th>
+                <th>Title4</th>
+                <th>Descriptif4</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for servicesAccueil in servicesAccueils %}
+            <tr>
+                <td><a href="{{ path('admin_servicesaccueil_show', { 'id': servicesAccueil.id }) }}">{{ servicesAccueil.icons1 }}</a></td>
+                <td>{{ servicesAccueil.title1 }}</td>
+                <td>{{ servicesAccueil.descriptif1 }}</td>
+                <td>{{ servicesAccueil.icons2 }}</td>
+                <td>{{ servicesAccueil.title2 }}</td>
+                <td>{{ servicesAccueil.descriptif2 }}</td>
+                <td>{{ servicesAccueil.icons3 }}</td>
+                <td>{{ servicesAccueil.title3 }}</td>
+                <td>{{ servicesAccueil.descriptif3 }}</td>
+                <td>{{ servicesAccueil.icons4 }}</td>
+                <td>{{ servicesAccueil.title4 }}</td>
+                <td>{{ servicesAccueil.descriptif4 }}</td>
+                <td>{{ servicesAccueil.id }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_servicesaccueil_show', { 'id': servicesAccueil.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_servicesaccueil_edit', { 'id': servicesAccueil.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_servicesaccueil_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

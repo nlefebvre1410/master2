@@ -1,0 +1,141 @@
+{% extends '@CzAdmin/Layout/layout.html.twig' %}
+
+
+{% block content %}
+
+    {% include '@CzAdmin/Layout/_header.global.html.twig' %}
+
+    <div class="row">
+    <div class="col-md-12">
+        {% for slide in carrousel.slides %}
+
+{% set test =   slide.image.AssetPath | imagine_filter('image_small_png')  %}
+{{ test }}
+        {% endfor %}
+        {% form_theme edit_form 'CzAdminBundle:Form:fields.html.twig' %}
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title">Basic layout</h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <h6>Format</h6>
+                {#{{ form_start(edit_form) }}#}
+                {#{{ form_widget(edit_form) }}#}
+
+                {#{% form_theme edit_form.slides 'CzAdminBundle:Form:fields.html.twig' %}#}
+                <ul class="tags" data-prototype="{{ form_widget(edit_form.slides.vars.prototype)|e('html_attr') }}">
+                    {# iterate over each existing tag and render its only field: name #}
+                    {% for slide in edit_form.slides %}
+                        <li>{{ form_row(slide.image,{'attr':{'id': 1 }}) }}</li>
+                        <li>{{ form_row(slide.format,{'attr':{'class': 'col-lg  -3' }}) }}</li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+                <input type="submit" value="Edit" />
+                {#{{ form_end(edit_form) }}#}
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+<script type="application/javascript">
+    var $collectionHolder;
+
+    // setup an "add a tag" link
+    var $addTagLink = $('<a href="#" class="add_tag_link">Add a Slide</a>');
+    var $newLinkLi = $('<li></li>').append($addTagLink);
+
+    jQuery(document).ready(function() {
+
+
+        $.ajax({
+        type: 'get',
+        url: Routing.generate('carrousel_edit_ajax', {id:  '{{ carrousel.id }}'}),
+
+        success: function(data) {
+
+            $.each(data.images, function(index,value) {
+                $('.file-input-custom').fileinput({
+                    previewFileType: 'image',
+                    language: "fr",
+                    browseLabel: 'Select',
+                    browseClass: 'btn bg-slate-700',
+                    browseIcon: '<i class="icon-image2 position-left"></i> ',
+                    removeLabel: 'Remove',
+                    removeClass: 'btn btn-danger',
+                    removeIcon: '<i class="icon-cancel-square position-left"></i> ',
+                    uploadClass: 'btn bg-teal-400',
+                    uploadIcon: '<i class="icon-file-upload position-left"></i> ',
+                    layoutTemplates: {
+                        icon: '<i class="icon-file-check"></i>'
+                    },
+                    initialPreview: [
+
+                        "<img src=http://testhostel:8888/uploads/cache/image_small_png/uploads/"+ value+">",
+
+                    ],
+                    initialCaption: "Please select images",
+                    mainClass: 'input-group'
+                });
+                console.log(value)
+            });
+
+
+
+        }
+    });
+
+
+        $('div').removeClass('form-group')
+        // Get the ul that holds the collection of tags
+        $collectionHolder = $('ul.tags');
+
+        // add the "add a tag" anchor and li to the tags ul
+        $collectionHolder.append($newLinkLi);
+
+        // count the current form inputs we have (e.g. 2), use that as the new
+        // index when inserting a new item (e.g. 2)
+        $collectionHolder.data('index', $collectionHolder.find(':input').length);
+
+        $addTagLink.on('click', function(e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // add a new tag form (see next code block)
+            addTagForm($collectionHolder, $newLinkLi);
+        });
+        function addTagForm($collectionHolder, $newLinkLi) {
+            $(this).addClass('form-group')
+            // Get the data-prototype explained earlier
+            var prototype = $collectionHolder.data('prototype');
+
+            // get the new index
+            var index = $collectionHolder.data('index');
+            console.log(index);
+            // Replace '__name__' in the prototype's HTML to
+            // instead be a number based on how many items we have
+            var newForm = prototype.replace(/__name__/g, index);
+
+            // increase the index with one for the next item
+            $collectionHolder.data('index', index + 1);
+
+            // Display the form in the page in an li, before the "Add a tag" link li
+            var $newFormLi = $('<li></li>').append(newForm);
+            $newLinkLi.before($newFormLi);
+        }
+    });
+</script>
+{% endblock %}

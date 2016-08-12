@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>ServicesAccueil</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Icons1</th>
+                <td>{{ servicesAccueil.icons1 }}</td>
+            </tr>
+            <tr>
+                <th>Title1</th>
+                <td>{{ servicesAccueil.title1 }}</td>
+            </tr>
+            <tr>
+                <th>Descriptif1</th>
+                <td>{{ servicesAccueil.descriptif1 }}</td>
+            </tr>
+            <tr>
+                <th>Icons2</th>
+                <td>{{ servicesAccueil.icons2 }}</td>
+            </tr>
+            <tr>
+                <th>Title2</th>
+                <td>{{ servicesAccueil.title2 }}</td>
+            </tr>
+            <tr>
+                <th>Descriptif2</th>
+                <td>{{ servicesAccueil.descriptif2 }}</td>
+            </tr>
+            <tr>
+                <th>Icons3</th>
+                <td>{{ servicesAccueil.icons3 }}</td>
+            </tr>
+            <tr>
+                <th>Title3</th>
+                <td>{{ servicesAccueil.title3 }}</td>
+            </tr>
+            <tr>
+                <th>Descriptif3</th>
+                <td>{{ servicesAccueil.descriptif3 }}</td>
+            </tr>
+            <tr>
+                <th>Icons4</th>
+                <td>{{ servicesAccueil.icons4 }}</td>
+            </tr>
+            <tr>
+                <th>Title4</th>
+                <td>{{ servicesAccueil.title4 }}</td>
+            </tr>
+            <tr>
+                <th>Descriptif4</th>
+                <td>{{ servicesAccueil.descriptif4 }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ servicesAccueil.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_servicesaccueil_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_servicesaccueil_edit', { 'id': servicesAccueil.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,54 @@
+<?php
+
+namespace Cz\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Images
+ *
+ * @ORM\Table(name="cz_adminbundle_images")
+ * @ORM\Entity
+ */
+class Images extends \Cz\ManagerBundle\Entity\AbstractEntity
+{
+    /**
+     * @ORM\OneToOne(targetEntity="Cz\AdminBundle\Entity\MediaAdmin", cascade={"persist","remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $medias;
+
+    /**
+     * Bidirectional - Many comments are favorited by many users (INVERSE SIDE)
+     *
+     * @ORM\ManyToMany(targetEntity="Cz\AdminBundle\Entity\AcEn2Mots", mappedBy="picture")
+     */
+    protected $acen2mots;
+
+
+
+    /**
+     * Set medias
+     *
+     * @param \Cz\AdminBundle\Entity\MediaAdmin $medias
+     *
+     * @return Images
+     */
+    public function setMedias(\Cz\AdminBundle\Entity\MediaAdmin $medias)
+    {
+        $this->medias = $medias;
+
+        return $this;
+    }
+
+    /**
+     * Get medias
+     *
+     * @return \Cz\AdminBundle\Entity\MediaAdmin
+     */
+    public function getMedias()
+    {
+        return $this->medias;
+    }
+}

@@ -1,0 +1,9 @@
+index:
+    path: /
+    defaults: { _controller: CzI18Bundle:Acceuil:index }
+page:
+    pattern:  /{slug}
+    defaults: { _controller: CzI18Bundle:Acceuil:page }
+page2:
+    pattern:  /{slug}/{slug2}
+    defaults: { _controller: CzI18Bundle:Acceuil:page2 }
