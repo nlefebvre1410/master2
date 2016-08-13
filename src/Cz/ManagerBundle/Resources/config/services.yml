@@ -3,6 +3,7 @@ parameters:
     cz_manager.menubuilder.class: 'Cz\ManagerBundle\Helper\Menu\MenuBuilder'
     cz_manager.piwik.class: 'Cz\ManagerBundle\Helper\Piwik\PiwikAPI'
     cz_manager.images.class: 'Cz\ManagerBundle\Helper\Images\FileUploader'
+    cz_manager.domain_configuration.class: 'Cz\ManagerBundle\Helper\Utils\DomainConfiguration'
 
 services:
      cz.czmanager:
@@ -24,3 +25,7 @@ services:
      cz_manager.fileuploader:
              class: %cz_manager.images.class%
              arguments: [ @doctrine.orm.entity_manager, @request_stack, @validator, @kernel ]
+
+     cz_manager.domain_configuration:
+           class: '%cz_manager.domain_configuration.class%'
+           arguments: ['@service_container']

@@ -4,6 +4,7 @@ namespace Cz\AdminBundle\Controller;
 
 use Cz\AdminBundle\Entity\Carrousel;
 use Cz\AdminBundle\Entity\Namec;
+use Cz\AdminBundle\Entity\Node;
 use Cz\AdminBundle\Entity\Pages;
 use Cz\AdminBundle\Entity\PagesTranslation;
 use Cz\AdminBundle\Entity\Person;
@@ -14,22 +15,19 @@ use Cz\AdminBundle\Entity\Tag;
 use Cz\AdminBundle\Form\NamecType;
 use Cz\AdminBundle\Form\CarrouselType;
 use Cz\AdminBundle\Form\Handler\CzHandler;
+use Cz\AdminBundle\Form\NodeAdminType;
 use Cz\AdminBundle\Form\PagesTranslationType;
 use Cz\AdminBundle\Form\PostType;
 use Cz\AdminBundle\Form\ProductType;
 use Cz\AdminBundle\Form\PropertyType;
 use DateTime;
-use Kunstmaan\AdminBundle\Entity\BaseUser;
-use Kunstmaan\AdminBundle\Entity\EntityInterface;
-use Kunstmaan\AdminBundle\FlashMessages\FlashTypes;
-use Kunstmaan\NodeBundle\Event\RecopyPageTranslationNodeEvent;
-use Kunstmaan\NodeBundle\Form\NodeMenuTabTranslationAdminType;
-use Kunstmaan\NodeBundle\Form\NodeMenuTabAdminType;
+
 use InvalidArgumentException;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\Common\Collections\ArrayCollection;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,25 +41,7 @@ use Symfony\Component\Security\Acl\Model\EntryInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Kunstmaan\AdminBundle\Helper\Security\Acl\AclHelper;
-use Kunstmaan\AdminBundle\Helper\Security\Acl\Permission\PermissionMap;
-use Kunstmaan\AdminListBundle\AdminList\AdminList;
-use Kunstmaan\NodeBundle\AdminList\NodeAdminListConfigurator;
-use Kunstmaan\NodeBundle\Entity\Node;
-use Kunstmaan\NodeBundle\Event\Events;
-use Kunstmaan\NodeBundle\Event\NodeEvent;
-use Kunstmaan\NodeBundle\Event\AdaptFormEvent;
-use Kunstmaan\NodeBundle\Event\RevertNodeAction;
-use Kunstmaan\NodeBundle\Entity\HasNodeInterface;
-use Kunstmaan\AdminBundle\Helper\FormWidgets\Tabs\Tab;
-use Kunstmaan\AdminBundle\Helper\FormWidgets\Tabs\TabPane;
-use Kunstmaan\NodeBundle\Repository\NodeVersionRepository;
-use Kunstmaan\NodeBundle\Event\CopyPageTranslationNodeEvent;
-use Kunstmaan\NodeBundle\Entity\NodeVersion;
-use Kunstmaan\NodeBundle\Entity\NodeTranslation;
-use Kunstmaan\UtilitiesBundle\Helper\ClassLookup;
-use Kunstmaan\AdminBundle\Helper\FormWidgets\FormWidget;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class DefaultController extends Controller
 {
@@ -295,32 +275,31 @@ class DefaultController extends Controller
      * @Template()
      */
     public function testAction(Request $request)
-
     {
+        $this->init($request);
+        /* @var Node $node */
+        $node = $this->em->getRepository('KunstmaanNodeBundle:Node')->find($id);
 
-         $pe = new Product();
+        $this->checkPermission($node, PermissionMap::PERMISSION_EDIT);
 
+        $entityName = $node->getRefEntityName();
+        /* @var HasNodeInterface $myLanguagePage */
+        $myLanguagePage = new $entityName();
+        $myLanguagePage->setTitle('New page');
 
+        $this->em->persist($myLanguagePage);
+        $this->em->flush();
+        /* @var NodeTranslation $nodeTranslation */
+        $nodeTranslation = $this->em->getRepository('KunstmaanNodeBundle:NodeTranslation')
+            ->createNodeTranslationFor($myLanguagePage, $this->locale, $node, $this->user);
+        $nodeVersion     = $nodeTranslation->getPublicNodeVersion();
 
-        $form =  $this->createForm(new ProductType(),$pe);
-        $form->add('submit', SubmitType::class, array(
-            'label' => 'Create',
-            'attr'  => array('class' => 'btn btn-default ')
-        ));
-        $form->handleRequest($request);
+//        $this->get('event_dispatcher')->dispatch(
+//            Events::ADD_EMPTY_PAGE_TRANSLATION,
+//            new NodeEvent($node, $nodeTranslation, $nodeVersion, $myLanguagePage)
+//        );
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($pe);
-            $em->flush();
-            return $this->redirectToRoute('CzAdminBundle_homepage');
-        }
-
-
-        return $this->render('CzAdminBundle:test:test.html.twig', array(
-            'form' => $form->createView(),
-        ));
-
+        return $this->redirect($this->generateUrl('KunstmaanNodeBundle_nodes_edit', array('id' => $id)));
     }
 
     /**

@@ -7,3 +7,11 @@ page:
 page2:
     pattern:  /{slug}/{slug2}
     defaults: { _controller: CzI18Bundle:Acceuil:page2 }
+
+cz_i18_lang:
+    resource: "@CzI18Bundle/Controller/LangController.php"
+    type:     annotation
+
+cz_i18_pages:
+    resource: "@CzI18Bundle/Controller/PagesController.php"
+    type:     annotation

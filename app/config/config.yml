@@ -20,6 +20,8 @@ twig:
         websitetitle: %websitetitle%
         defaultlocale: %defaultlocale%
         lang: %lang%
+        locales: [fr,en]
+        requiredlocales: %requiredlocales%
 #        requiredlocales: %requiredlocales%
 #        gtm_code: %analytics.googletagmanager%
         #titlecolor: "#000000"
@@ -104,7 +106,7 @@ be_simple_i18n_routing:
 
 jms_i18n_routing:
     default_locale: %locale%
-    locales: [fr, en, de]
+    locales: [fr, en]
     strategy: prefix
 
 

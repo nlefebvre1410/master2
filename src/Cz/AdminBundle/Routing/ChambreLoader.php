@@ -17,21 +17,21 @@ class ChambreLoader extends Loader
             throw new \RuntimeException('Do not add the "extra" loader twice');
         }
 
-        $routes = new RouteCollection();
-        $routes->add('show_post', new Route('/show/{slug}'));
-
-        $context = new RequestContext('/');
-
-        $generator = new UrlGenerator($routes, $context);
-
-        $url = $generator->generate('show_post', array(
-            'slug' => 'my-blog-post',
-        ));
+//        $routes = new RouteCollection();
+//        $routes->add('show_post', new Route('/show/{slug}'));
+//
+//        $context = new RequestContext('/');
+//
+//        $generator = new UrlGenerator($routes, $context);
+//
+//        $url = $generator->generate('show_post', array(
+//            'slug' => 'my-blog-post',
+//        ));
         /*******************************/
         $routes = new RouteCollection();
 
         // prepare a new route
-        $path = '/admin/{}';
+        $path = '{url}';
         $defaults = array(
             '_controller' => 'CzAdminBundle:ChambreDetails:index',
         );
@@ -41,7 +41,7 @@ class ChambreLoader extends Loader
         $route = new Route($path, $defaults);
 
         // add the new route to the route collection
-        $routeName = 'extraRoute';
+        $routeName = '_slug';
         $routes->add($routeName, $route);
 
         $this->loaded = true;

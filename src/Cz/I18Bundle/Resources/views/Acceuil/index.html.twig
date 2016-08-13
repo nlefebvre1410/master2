@@ -3,9 +3,10 @@
 {% block title %}CzI18Bundle:Acceuil:index{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Acceuil:index pageddds</h1>
-
+<h1>Welcome to the Acceuil:index page</h1>
+    {% include 'A2lixTranslationFormBundle:Util:localeSwitcher.html.twig' only %}
+    {{ dump(app.request)}}
     <ul class="nav nav-stacked">
-        {% render(controller('CzAdminBundle:ChambreGenerale:menu')) %}
+        {% render(controller('CzI18Bundle:Acceuil:menu')) %}
     </ul>
 {% endblock %}
